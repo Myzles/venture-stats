@@ -1,0 +1,18 @@
+name: collect
+on:
+  schedule: [{cron: "17 */2 * * *"}]
+  workflow_dispatch:
+permissions: {contents: write}
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 collector.py
+        env: {POLAR_TOKEN: "${{ secrets.POLAR_TOKEN }}"}
+      - run: bash encrypt.sh
+      - run: |
+          git config user.name "stats-bot"; git config user.email "stats-bot@users.noreply.github.com"
+          git add stats.enc stats.key.enc
+          git commit -m "stats $(date -u +%FT%TZ)" || echo "no change"
+          git push
