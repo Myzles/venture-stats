@@ -2,7 +2,7 @@
  "todo-lens": {"vscode": "myzles.myzles-todo-lens", "openvsx": "myzles/myzles-todo-lens", "polar": ["f1a8af8b-2e4c-4dc2-8870-19b370cd043a", "c3c9c696-6bbd-4132-9225-481305c49680"]},
  "contact-finder-ext": {"edge": "lmpahmbciihecdfbkhjmgfdibbfejnlf", "amo": "contact-finder-emails-phones", "polar": ["1672c797-cc55-4a6b-8e66-16f4737f2899", "b3300ad9-ff67-4792-9e47-7598b3ed86ad"]},
  "local-link-checker": {"wporg": "myzles-local-link-checker", "polar": ["006b071d-5be1-4910-946c-d4bd36a150d8", "053cb82d-b731-4e74-a730-5c0c14b95e79", "98fba054-8cd4-41b7-82c4-1712ff2cf5f5"]},
- "agent-os": {"polar": ["06d2b705-3b58-4158-85bf-c78dd369892e", "86b73ccb-07a0-49d0-a53a-63705e6b1ce4"]},
+ "agent-os": {"polar": ["06d2b705-3b58-4158-85bf-c78dd369892e", "2ca76810-1191-4686-b1ec-9048990866f0"]},
  "dedupe-match": {"polar": ["cc5c7e5e-3a45-4f6c-ab3a-404d8f5e726e", "98564288-a0a9-46ca-b04c-933fb4d3539e"]},
  "scheduled-sheet-reports": {"polar": ["bd7ec52b-9068-4d42-9a85-3589303f393d", "c600e8bf-4e99-400b-966a-bfc548c44e20"]},
  "dupe-sweep": {"polar": ["a961bda5-249a-4951-8907-98afe7d5a204", "6cb5b453-bb80-4a18-8b76-ed36fe59971e"]},
