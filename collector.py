@@ -113,7 +113,20 @@ if tok:
 else:
     errors.append("POLAR_TOKEN not set")
 
+# Click + webhook tracking from go.myzles.workers.dev (/stats is token-gated; the token is an Actions secret)
+tracking = None
+st = os.environ.get("STATS_TOKEN")
+if st:
+    try:
+        tracking = get("https://go.myzles.workers.dev/stats?token=" + urllib.parse.quote(st))
+        pid2slug = {pid: slug for slug, src in cfg["products"].items() for pid in src.get("polar", [])}
+        for pid, v in (tracking.get("polar") or {}).get("byProduct", {}).items():
+            v["slug"] = pid2slug.get(pid)
+    except Exception as e: errors.append(f"tracking: {type(e).__name__}")
+else:
+    errors.append("STATS_TOKEN not set")
+
 for d in out.values(): d.pop("_customers", None)
 now = datetime.datetime.now(datetime.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
-json.dump({"fetchedAt": now, "products": out, "errors": errors}, open("stats.json", "w"), indent=1, default=list)
+json.dump({"fetchedAt": now, "products": out, "tracking": tracking, "errors": errors}, open("stats.json", "w"), indent=1, default=list)
 print(json.dumps({"fetchedAt": now, "products": len(out), "errors": errors}))
