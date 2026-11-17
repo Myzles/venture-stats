@@ -8,5 +8,6 @@
  "dupe-sweep": {"polar": ["a961bda5-249a-4951-8907-98afe7d5a204", "6cb5b453-bb80-4a18-8b76-ed36fe59971e"]},
  "mermaid-diagrams": {"atlassian": "com.swagstudios.mermaid-canvas-confluence"},
  "mermaid-diagrams-jira": {"atlassian": "com.swagstudios.mermaid-canvas-jira"},
- "holdup": {"atlassian": "com.swagstudios.holdup-jira"}
+ "holdup": {"atlassian": "com.swagstudios.holdup-jira"},
+ "todoscope-jetbrains": {"jetbrains": "36225"}
 }}

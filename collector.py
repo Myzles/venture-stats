@@ -64,6 +64,14 @@ for slug, src in cfg["products"].items():
     except urllib.error.HTTPError as e:
         put(slug, atlassianStatus="not public yet") if e.code == 404 else errors.append(f"{slug} atlassian: {e}")
     except Exception as e: errors.append(f"{slug} atlassian: {e}")
+    try:
+        if src.get("jetbrains"):
+            r = get("https://plugins.jetbrains.com/api/plugins/%s" % src["jetbrains"])
+            rt = get("https://plugins.jetbrains.com/api/plugins/%s/rating" % src["jetbrains"])
+            votes = sum((rt.get("votes") or {}).values())
+            put(slug, installs=r.get("downloads"), rating=round(rt["meanRating"], 2) if votes else None, reviews=votes,
+                jetbrainsStatus="live" if r.get("approve") else "in review", jetbrainsPricing=r.get("pricingModel"))
+    except Exception as e: errors.append(f"{slug} jetbrains: {e}")
     # combine store user counts into installs when a product has several stores
     d = out.get(slug, {})
     parts = [d.get(k) for k in ("edgeUsers", "firefoxUsers", "openvsxDownloads") if isinstance(d.get(k), (int, float))]
